@@ -1,12 +1,13 @@
-import "./styles/Global.css"
-import NotificationButton from "./components/NotificationButton"
+
+import Header from "./components/Header"
+import Base from "./components/Base"
 
 function App() {
   return (
     <>
+      <Header />
+      <Base />
 
-      <h1>Hello World!</h1>
-      <NotificationButton />
     </>
   )
 }
