@@ -1,5 +1,6 @@
 import './style.css'
 import NotificationButton from "../NotificationButton"
+import Calendar from '../Calendar'
 
 export default function Base() {
     return (
@@ -9,10 +10,10 @@ export default function Base() {
                 <h2 className="dsmeta-sales-title">Vendas</h2>
                 <div>
                     <div className="dsmeta-form-control-container">
-                        <input className="dsmeta-form-control" type="text" />
+                        <Calendar />
                     </div>
                     <div className="dsmeta-form-control-container">
-                        <input className="dsmeta-form-control" type="text" />
+                        <Calendar />
                     </div>
                 </div>
 

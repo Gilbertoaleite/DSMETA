@@ -20,6 +20,14 @@ a:visited {
 	text-decoration: none;
 }
 
+.show576 {
+	display: none;
+}
+
+.show992 {
+	display: none;
+}
+
 @media (min-width: 576px) {
 	.show576 {
 		display: table-cell;
