@@ -11,34 +11,34 @@ import com.twilio.type.PhoneNumber;
  * @author Gilberto A Leite
  *
  */
-@Service
-public class SmsService {
-
-	@Value("${twilio.sid}")
-	private String twilioSid;
-
-	@Value("${twilio.key}")
-	private String twilioKey;
-
-	@Value("${twilio.phone.from}")
-	private String twilioPhoneFrom;
-
-	@Value("${twilio.phone.to}")
-	private String twilioPhoneTo;
-
-	public void sendSms() {
-		
-		/**
-		 * Envia sms pelo twilio
-		 */
-
-		Twilio.init(twilioSid, twilioKey);
-
-		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
-		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
-
-		Message message = Message.creator(to, from, "Teste").create();
-
-		System.out.println(message.getSid());
-	}
-}
+//@Service
+//public class SmsService {
+//
+//	@Value("${twilio.sid}")
+//	private String twilioSid;
+//
+//	@Value("${twilio.key}")
+//	private String twilioKey;
+//
+//	@Value("${twilio.phone.from}")
+//	private String twilioPhoneFrom;
+//
+//	@Value("${twilio.phone.to}")
+//	private String twilioPhoneTo;
+//
+//	public void sendSms() {
+//		
+//		/**
+//		 * Envia sms pelo twilio
+//		 */
+//
+//		Twilio.init(twilioSid, twilioKey);
+//
+//		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+//		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
+//
+//		Message message = Message.creator(to, from, "Teste").create();
+//
+//		System.out.println(message.getSid());
+//	}
+//}
