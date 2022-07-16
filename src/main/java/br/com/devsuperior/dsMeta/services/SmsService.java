@@ -37,7 +37,7 @@ public class SmsService {
 		
 		Sale sale = saleRepository.findById(saleId).get();
 		
-		String msg = "Vendedor " + sale.getSellerName();
+		String msg = "Vendedor " + sale.getSellerName() + " Total " + sale.getAmount();
 		
 		/**
 		 * Envia sms pelo twilio
