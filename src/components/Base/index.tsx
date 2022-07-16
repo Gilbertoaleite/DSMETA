@@ -1,13 +1,22 @@
 import './style.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import NotificationButton from "../NotificationButton";
-
+import { Api } from '../../Api';
+import { Sale } from '../../models/sale';
 
 export default function Base() {
     const [minDate, setMinDate] = useState(new Date());
     const [maxDate, setMaxDate] = useState(new Date());
+
+    const [sales, setSales] = useState<Sale[]>([]);
+
+    useEffect(() => {
+        Api.get(`/sales`).then((response: { data: any; }) => {
+            setSales(response.data.content);
+        })
+    }, []);
 
     return (
 
@@ -47,40 +56,24 @@ export default function Base() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className="show992">#341</td>
-                                <td className="show576">08/07/2022</td>
-                                <td>Anakin</td>
-                                <td className="show992">15</td>
-                                <td className="show992">11</td>
-                                <td>R$ 55300.00</td>
-                                <td>
-                                    <NotificationButton />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="show992">#341</td>
-                                <td className="show576">08/07/2022</td>
-                                <td>Anakin</td>
-                                <td className="show992">15</td>
-                                <td className="show992">11</td>
-                                <td>R$ 55300.00</td>
-                                <td>
-                                    <NotificationButton />
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="show992">#341</td>
-                                <td className="show576">08/07/2022</td>
-                                <td>Anakin</td>
-                                <td className="show992">15</td>
-                                <td className="show992">11</td>
-                                <td>R$ 55300.00</td>
-                                <td>
-                                    <NotificationButton />
-                                </td>
-                            </tr>
+                            {
+                                sales.map(sale => {
+                                    return (
+                                        <tr key={ sale.id }>
+                                            <td className="show992">#{ sale.id }</td>
+                                            <td className="show576">{ new Date(sale.date).toLocaleDateString() }</td>
+                                            <td>{ sale.sellerName }</td>
+                                            <td className="show992">{ sale.visited }</td>
+                                            <td className="show992">{ sale.deals }</td>
+                                            <td>R${ sale.amount.toFixed(2) }</td>
+                                            <td>
+                                                <NotificationButton />
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
 
                     </table>
