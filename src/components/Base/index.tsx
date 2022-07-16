@@ -13,10 +13,14 @@ export default function Base() {
     const [sales, setSales] = useState<Sale[]>([]);
 
     useEffect(() => {
-        Api.get(`/sales`).then((response: { data: any; }) => {
+        const dmin = minDate.toISOString().slice(0, 10);
+        const dmax = maxDate.toISOString().slice(0, 10);
+
+        Api.get(`/sales?minDate=${dmin}&maxDate=${dmax}`)
+        .then((response: { data: any; }) => {
             setSales(response.data.content);
         })
-    }, []);
+    }, [minDate, maxDate]);
 
     return (
 
